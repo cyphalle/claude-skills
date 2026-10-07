@@ -1,4 +1,4 @@
-# claude-skills
+# cpto-skills
 
 Claude Code skills from the operating model of a small product and engineering team
 that ships most of its pull requests through agents.
@@ -50,11 +50,29 @@ team where each domain has one named owner.
 
 ## Install
 
+As a Claude Code plugin:
+
+```
+/plugin marketplace add cyphalle/cpto-skills
+/plugin install cpto-skills@cyphalle
+```
+
+Plugin skills are namespaced: `/cpto-skills:spec`, `/cpto-skills:open-pr`. The same
+marketplace also offers [`agent-guardrails`](https://github.com/cyphalle/agent-guardrails).
+
+Then fill in your team facts, whatever the install method:
+
 ```bash
-git clone https://github.com/cyphalle/claude-skills ~/src/claude-skills
-cd ~/src/claude-skills
+mkdir -p ~/.claude/skills
+curl -fsSL https://raw.githubusercontent.com/cyphalle/cpto-skills/main/config.example.md -o ~/.claude/skills/config.md
+```
+
+Without the plugin system, clone the repo and symlink the skills, unprefixed:
+
+```bash
+git clone https://github.com/cyphalle/cpto-skills ~/src/cpto-skills
+cd ~/src/cpto-skills
 ./install.sh            # symlinks every skill into ~/.claude/skills
-cp config.example.md ~/.claude/skills/config.md   # then fill in owners, repo, board
 ```
 
 To install one skill only:
